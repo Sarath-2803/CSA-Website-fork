@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 0;
+  padding-top: clamp(0.6rem, 1.5vh, 1.2rem);
   background-color: #443741;
   box-sizing: border-box;
   z-index: 5;
@@ -53,10 +53,8 @@
   flex-shrink: 0;
 }
 
-/* High-specificity override: no top gap (navbar offset handles it), no bottom gap */
-#about .csa-section-heading {
-  padding-top: 0;
-  padding-bottom: 0;
+#about .csa-heading-dino {
+  right: clamp(3rem, 7vw, 7rem);
 }
 
 /* -------------------------------------------------------------
@@ -70,7 +68,7 @@
   align-items: flex-start;
   overflow: hidden;
   box-sizing: border-box;
-  padding-top: clamp(0.5rem, 1.5vh, 1.2rem);
+  padding-top: clamp(0.4rem, 1vh, 0.8rem);
   padding-bottom: 0;
 }
 
@@ -233,6 +231,10 @@
 @media (max-width: 600px) {
   :root {
     --navbar-h: 4.3rem;
+  }
+
+  #about .csa-heading-dino {
+    right: 1.2rem;
   }
 
   .about-section-container {
