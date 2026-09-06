@@ -110,11 +110,6 @@ export default function Gallery() {
                 </svg>
               </button>
             </div>
-
-            <div className="lightbox-footer">
-              <h3 className="lightbox-title">{currentImage.alt}</h3>
-              <p className="lightbox-subtitle">CSA Event</p>
-            </div>
           </div>
         </div>
       )}
