@@ -15,6 +15,8 @@
   --gold: #ffc77f;
   --csa-earth-bg: #836c5a;
   --csa-earth-text: #202020;
+  --csa-section-padding-start: clamp(1.8rem, 3.5vw, 2.8rem);
+  --csa-section-padding-end: clamp(3.2rem, 5vw, 4.5rem);
   --csa-noise-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.75'/%3E%3C/svg%3E");
 }
 
@@ -112,11 +114,16 @@ section[id] {
   background-image: none;
 }
 
+.csa-section-shell,
 .csa-earth-section {
   position: relative;
   isolation: isolate;
-  min-height: calc(100vh - 5.2rem);
   overflow: hidden;
+  padding-block: var(--csa-section-padding-start) var(--csa-section-padding-end);
+}
+
+.csa-earth-section {
+  min-height: calc(100vh - 5.2rem);
   background-color: var(--csa-earth-bg);
   background-image: var(--csa-noise-image);
   background-size: 180px 180px;
@@ -124,13 +131,17 @@ section[id] {
   color: var(--csa-earth-text);
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
   scroll-margin-top: 5.2rem;
-  padding: clamp(1.8rem, 3.5vw, 2.8rem) 0 clamp(3.2rem, 5vw, 4.5rem);
 }
 
 @media (max-width: 980px) {
+  :root {
+    --csa-section-padding-start: clamp(2.2rem, 4.5vw, 3rem);
+    --csa-section-padding-end: clamp(3.3rem, 5.5vw, 4.3rem);
+  }
+
+  .csa-section-shell,
   .csa-earth-section {
     min-height: auto;
-    padding: clamp(1.2rem, 3vw, 1.8rem) 0 clamp(2.4rem, 4.5vw, 3.4rem);
   }
 }
 
@@ -274,9 +285,13 @@ section[id] {
 
 
 @media (max-width: 640px) {
+  :root {
+    --csa-section-padding-start: clamp(2.7rem, 8.5vw, 3.2rem);
+    --csa-section-padding-end: clamp(4.2rem, 13vw, 5.1rem);
+  }
+
   .csa-earth-section {
     min-height: auto;
-    padding: clamp(1.2rem, 4vw, 1.8rem) 0 clamp(2.4rem, 7vw, 3.2rem);
   }
 
   .csa-section-heading {
