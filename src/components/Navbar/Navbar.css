@@ -334,6 +334,7 @@
 }
 
 .topbar.is-earth .nav-pill {
+  border-width: 2px;
   border-color: #202020;
   color: #202020;
 }
