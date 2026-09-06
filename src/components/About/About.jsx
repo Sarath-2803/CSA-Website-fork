@@ -141,7 +141,7 @@ export default function About() {
       const progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1);
       const trackWidth = track.scrollWidth;
       const viewportWidth = window.innerWidth;
-      const maxTranslate = Math.max(0, trackWidth - viewportWidth + 140);
+      const maxTranslate = Math.max(0, trackWidth - viewportWidth);
       const translate = progress * maxTranslate;
       track.style.transform = `translate3d(-${translate}px, 0, 0)`;
     };

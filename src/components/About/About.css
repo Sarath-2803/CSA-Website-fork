@@ -70,7 +70,7 @@
   align-items: flex-start;
   overflow: hidden;
   box-sizing: border-box;
-  padding-top: 0;
+  padding-top: clamp(0.5rem, 1.5vh, 1.2rem);
   padding-bottom: 0;
 }
 
@@ -78,8 +78,8 @@
   display: flex;
   align-items: flex-start;
   height: 100%;
-  padding-left: clamp(1.5rem, 4vw, 4rem);
-  padding-right: clamp(3rem, 6vw, 6rem);
+  padding-left: clamp(2rem, 4vw, 3.5rem);
+  padding-right: clamp(2rem, 4vw, 3.5rem);
   position: relative;
   will-change: transform;
   box-sizing: border-box;
@@ -96,20 +96,24 @@
   z-index: 1;
 }
 
-/* Section Card — ~42vw wide to match design reference */
+/* Section Card — ~35vw wide to show 2 cards + peek of 3rd at scroll start */
 .about-section-card {
-  width: clamp(320px, 42vw, 680px);
+  width: clamp(290px, 35vw, 480px);
   flex-shrink: 0;
-  margin-right: clamp(120px, 12vw, 200px);
-  height: 100%;
+  margin-right: clamp(50px, 8vw, 100px);
+  height: clamp(340px, 50vh, 420px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: clamp(1rem, 2vh, 1.8rem) 0.5rem clamp(1rem, 2vh, 1.8rem);
+  padding: clamp(0.6rem, 1.5vh, 1.2rem) 0.5rem;
   box-sizing: border-box;
   position: relative;
   z-index: 2;
+}
+
+.about-section-card:last-child {
+  margin-right: 0;
 }
 
 .card-circle-top {
@@ -122,14 +126,14 @@
 
 /* White Circle Node */
 .about-circle-node {
-  width: clamp(120px, 11vw, 160px);
-  height: clamp(120px, 11vw, 160px);
+  width: clamp(95px, 8.5vw, 120px);
+  height: clamp(95px, 8.5vw, 120px);
   border-radius: 50%;
   background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
   flex-shrink: 0;
   transition:
     transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -139,12 +143,12 @@
 
 .about-circle-node:hover {
   transform: scale(1.06);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
 }
 
 .section-svg-icon {
-  width: clamp(46px, 4.2vw, 62px);
-  height: clamp(46px, 4.2vw, 62px);
+  width: clamp(38px, 3.4vw, 48px);
+  height: clamp(38px, 3.4vw, 48px);
   display: block;
 }
 
@@ -154,7 +158,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 560px;
+  max-width: 420px;
   padding: 0 0.5rem;
   box-sizing: border-box;
 }
@@ -162,11 +166,11 @@
 .about-card-heading {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
-  font-size: clamp(2rem, 5.5vw, 5rem);
+  font-size: clamp(1.85rem, 3.2vw, 3.2rem);
   letter-spacing: -0.035em;
   color: #ffffff;
-  line-height: 1.06;
-  margin: 0 0 0.6rem 0;
+  line-height: 1.08;
+  margin: 0 0 0.45rem 0;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
   user-select: none;
 }
@@ -174,8 +178,8 @@
 .about-card-desc {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
-  line-height: 1.55;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.92);
   margin: 0;
   text-align: center;
@@ -193,30 +197,36 @@
     height: 200vh;
   }
 
+  .about-track-content {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+  }
+
   .about-section-card {
-    width: clamp(280px, 75vw, 500px);
-    margin-right: clamp(80px, 10vw, 140px);
-    padding: 1.1rem 0.5rem;
+    width: clamp(260px, 65vw, 400px);
+    height: clamp(320px, 48vh, 390px);
+    margin-right: clamp(40px, 7vw, 70px);
+    padding: 0.8rem 0.4rem;
   }
 
   .about-circle-node {
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
   }
 
   .section-svg-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .about-card-heading {
-    font-size: clamp(1.8rem, 6vw, 3rem);
-    margin-bottom: 0.4rem;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    margin-bottom: 0.35rem;
   }
 
   .about-card-desc {
-    font-size: 0.92rem;
-    line-height: 1.48;
+    font-size: 0.88rem;
+    line-height: 1.44;
   }
 }
 
@@ -230,27 +240,33 @@
   }
 
   .about-track-content {
-    padding-left: 1rem;
-    padding-right: 2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
 
   .about-section-card {
-    width: clamp(260px, 80vw, 380px);
-    margin-right: 60px;
-    padding: 1rem 0.4rem;
+    width: clamp(230px, 75vw, 290px);
+    height: 310px;
+    margin-right: 35px;
+    padding: 0.6rem 0.3rem;
   }
 
   .about-circle-node {
-    width: 85px;
-    height: 85px;
+    width: 72px;
+    height: 72px;
   }
 
   .section-svg-icon {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
   }
 
   .about-card-heading {
-    font-size: clamp(1.6rem, 7vw, 2.5rem);
+    font-size: 1.4rem;
+  }
+
+  .about-card-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 }
