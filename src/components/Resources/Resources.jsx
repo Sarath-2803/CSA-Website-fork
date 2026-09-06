@@ -1,13 +1,23 @@
 import styles from './Resources.module.css';
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import skills from './skills';
 
 const resources = [
   { name: 'Academics', subResources: [{ name: 'Notes', children: [{ name: 'Year 1', link: 'https://drive.google.com/drive/folders/1upBa26qyFiXwrJ8fSnwcl5NPlDFmzZc6?usp=drive_link' }, { name: 'Year 2', link: 'https://drive.google.com/drive/folders/1PA63qS4y6VP_1Hj7_jf1t0ze2O2XCrjR?usp=drive_link' }, { name: 'Year 3', link: 'https://drive.google.com/drive/folders/1WyXtpGWIneR3RyiEBZ3SOydcvSlUpv4o?usp=drive_link' }] }, { name: 'Gate Prep', link: 'https://drive.google.com/drive/folders/1rj0kTkSZ8j_g1oGFlKQqR7J_i-bbdhvS' }, { name: 'Study Help Guide', link: 'https://docs.google.com/document/d/1TAe7Kq8E2Xv7J4ITHQ0IVUfYA5fHqekZ/edit?usp=drive_link&ouid=103309018449688798459&rtpof=true&sd=true' }] },
-  { name: 'Skill Development', subResources: [{ name: 'Coding', link: '#' }, { name: 'Designing', link: '#' }, { name: 'Public Speaking', link: '#' }] },
+  {
+    name: 'Skill Development',
+    subResources: skills
+  },
 ]
 
 export default function Resources() {
+  const [openResource, setOpenResource] = useState('Academics');
   const [openNotes, setOpenNotes] = useState(false);
+
+  const toggleResource = (resourceName) => {
+    setOpenResource((currentValue) => (currentValue === resourceName ? null : resourceName));
+  };
 
   const toggleNotes = () => {
     setOpenNotes((currentValue) => !currentValue);
@@ -34,76 +44,99 @@ export default function Resources() {
         </div>
       </section>
 
-
       <section className={styles['resources-section']}>
-        {resources.map((resource, index) => (
-          <div key={index}>
+        {resources.map((resource, index) => {
+          const isOpen = openResource === resource.name;
 
-            <div className={styles['resource-header']}>
-              <h2 className={styles['resource-name']}>
-                {index + 1}. {resource.name}
-              </h2>
-            </div>
+          return (
+            <div key={resource.name} className={styles['resource-group']}>
+              <button
+                type="button"
+                className={styles['resource-header']}
+                onClick={() => toggleResource(resource.name)}
+                aria-expanded={isOpen}
+              >
+                <h2 className={styles['resource-name']}>
+                  {index + 1}. {resource.name}
+                </h2>
+                <div className={styles['toggle-icon-container']}>
+                  <span className={styles['toggle-icon-main']} aria-hidden="true">
+                    {isOpen ? '▾' : '▸'}
+                  </span>
+                </div>
+              </button>
 
-              <div className={styles['sub-resources']}>
-                {resource.subResources.map((subResource, subIndex) => (
-                  <div className={styles['sub-resource-group']} key={subIndex}>
-                    {subResource.children ? (
-                      <>
-                        <button
-                          type="button"
-                          className={styles['sub-resource-toggle']}
-                          onClick={toggleNotes}
-                          aria-expanded={openNotes}
-                        >
-                          {/* <span className={styles.dot}></span> */}
-                           <span className={styles['toggle-icon']} aria-hidden="true">
-                            {openNotes ? '▾' : '▸'}
-                          </span>
-                          <span className={styles['sub-resource-name']}>
+              {isOpen && (
+                <div className={styles['sub-resources']}>
+                  {resource.subResources.map((subResource, subIndex) => (
+                    <div className={styles['sub-resource-group']} key={`${resource.name}-${subResource.name}-${subIndex}`}>
+                      {subResource.children ? (
+                        <>
+                          <button
+                            type="button"
+                            className={styles['sub-resource-toggle']}
+                            onClick={toggleNotes}
+                            aria-expanded={openNotes}
+                          >
+                            <span className={styles['toggle-icon']} aria-hidden="true">
+                              ▸
+                            </span>
+                            <span className={styles['sub-resource-name']}>
+                              {subResource.name}
+                            </span>
+                          </button>
+
+                          {openNotes && (
+                            <div className={styles['nested-resources']}>
+                              {subResource.children.map((yearResource, yearIndex) => (
+                                <div className={styles['nested-resource-item']} key={`${yearResource.name}-${yearIndex}`}>
+                                  <span className={styles['nested-dot']}></span>
+                                  <a
+                                    href={yearResource.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles['nested-resource-name']}
+                                  >
+                                    {yearResource.name}
+                                  </a>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </>
+                      ) : subResource.slug ? (
+                        <div className={styles['sub-resource-item']}>
+                          <span className={styles.dot}></span>
+
+                          <Link
+                            to={`/resources/${subResource.slug}`}
+                            className={styles['sub-resource-name']}
+                          >
                             {subResource.name}
-                          </span>
-                        
-                        </button>
+                          </Link>
+                        </div>
+                      ) : (
+                        <div className={styles['sub-resource-item']}>
+                          <span className={styles.dot}></span>
 
-                        {openNotes && (
-                          <div className={styles['nested-resources']}>
-                            {subResource.children.map((yearResource, yearIndex) => (
-                              <div className={styles['nested-resource-item']} key={yearIndex}>
-                                <span className={styles['nested-dot']}></span>
-                                <a
-                                  href={yearResource.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className={styles['nested-resource-name']}
-                                >
-                                  {yearResource.name}
-                                </a>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <div className={styles['sub-resource-item']}>
-                        <span className={styles.dot}></span>
-
-                        <a
-                          href={subResource.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles['sub-resource-name']}
-                        >
-                          {subResource.name}
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-          </div>
-        ))}
+                          <a
+                            href={subResource.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles['sub-resource-name']}
+                          >
+                            {subResource.name}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </section>
     </main>
-  )
+  );
 }

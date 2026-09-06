@@ -68,29 +68,18 @@
 }
 
 .recruiter-logo {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   min-width: max-content;
-  color: #202020;
-  font-size: 2.9rem;
-  font-weight: 900;
-  letter-spacing: -0.07em;
-  line-height: 1;
-  opacity: 0.94;
-  transition: 0.3s;
-  text-transform: none;
+  height: clamp(2.4rem, 3.5vw, 3.5rem);
 }
 
-.recruiter-logo:nth-child(3n + 1) {
-  font-weight: 900;
-}
-
-.recruiter-logo:nth-child(3n + 2) {
-  font-weight: 700;
-}
-
-.recruiter-logo:nth-child(3n) {
-  font-weight: 500;
+.recruiter-logo img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: none;
 }
 
 .placement-stats {
@@ -101,6 +90,24 @@
   gap: clamp(1.6rem, 5vw, 5.2rem);
   width: min(100% - clamp(2rem, 8vw, 8rem), 76rem);
   margin: 0 auto;
+}
+
+.placement-disclaimer {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 4rem);
+  bottom: clamp(1.2rem, 2.5vw, 2.2rem);
+  max-width: min(18rem, calc(100% - 2.5rem));
+  margin: 0;
+  color: rgba(32, 32, 32, 0.72);
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.placement-disclaimer span {
+  font-weight: 800;
 }
 
 .placement-stat {
@@ -142,19 +149,20 @@
 }
 
 @media (max-width: 980px) {
-  .placements-section.csa-earth-section {
-    min-height: auto;
-    padding-top: clamp(2rem, 4vw, 3rem);
-    padding-bottom: clamp(2.4rem, 4.5vw, 3.4rem);
+  .placement-disclaimer {
+    position: static;
+    width: fit-content;
+    max-width: calc(100% - 2rem);
+    margin: clamp(0.7rem, 1.8vw, 1rem) auto 0;
+    text-align: center;
   }
 
   .placements-content {
     min-height: auto;
-    gap: clamp(0.95rem, 2vw, 1.45rem);
+    gap: clamp(1.55rem, 3vw, 2.2rem);
   }
 
   .placements-heading {
-    --csa-heading-size: clamp(3.7rem, 14vw, 9rem);
     --csa-heading-line-top: -0.115em;
     --csa-heading-line-bottom: 0.45em;
     --csa-heading-vertical-height: 1.26em;
@@ -166,20 +174,24 @@
     gap: clamp(1.35rem, 3vw, 2rem) 1.5rem;
     width: min(100% - 2rem, 38rem);
   }
+
+  .placement-stat:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .placement-stat:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
 
 @media (max-width: 640px) {
-  .placements-section.csa-earth-section {
-    padding-top: clamp(2.4rem, 8vw, 3.2rem);
-    padding-bottom: clamp(2.7rem, 9vw, 3.6rem);
-  }
-
   .placements-content {
-    gap: 1.55rem;
+    gap: clamp(2.15rem, 7vw, 2.8rem);
   }
 
   .placements-heading {
-    --csa-heading-size: clamp(3.05rem, 15vw, 5.5rem);
     --csa-heading-line-top: -0.115em;
     --csa-heading-line-bottom: 0.45em;
     --csa-heading-vertical-height: 1.24em;
@@ -190,16 +202,22 @@
     --marquee-gap: 2.4rem;
   }
 
+  .recruiters-wrap {
+    gap: clamp(1.25rem, 5vw, 1.55rem);
+  }
+
   .recruiter-track {
     animation-duration: 18s;
   }
 
   .placement-stats {
-    gap: 2rem 1rem;
+    gap: clamp(1.75rem, 7vw, 2.25rem) 1rem;
+    width: min(100% - 1.5rem, 34rem);
+    margin-top: clamp(0.55rem, 3vw, 1rem);
   }
 
   .placement-stat strong {
-    font-size: clamp(1.85rem, 10vw, 3rem);
+    font-size: clamp(1.7rem, 9vw, 2.7rem);
   }
 
   .placement-stat span {

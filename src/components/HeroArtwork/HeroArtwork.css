@@ -1,5 +1,6 @@
 .art-card {
   position: relative;
+  z-index: 3;
   width: min(100%, 38rem);
   justify-self: end;
   margin-top: 2.6rem;
@@ -21,7 +22,20 @@
 
 @media (max-width: 780px) {
   .art-card {
-    width: min(calc(100vw - (2 * var(--mobile-gutter))), 30rem);
-    margin-top: 0.8rem;
+    width: min(calc(100vw - (2 * var(--mobile-gutter))), 20rem);
+    max-height: 36vh;
+    max-height: 36dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.2rem;
+  }
+
+  .art-card img {
+    max-height: 34vh;
+    max-height: 34dvh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 }
