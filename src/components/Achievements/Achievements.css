@@ -235,18 +235,33 @@
 }
 
 @media (max-width: 768px) {
-  .carousel-section { flex-direction: column; padding: 2.5rem 1.25rem 5rem; }
-  .carousel-inner { flex-direction: column; }
-  .poster-card { width: min(16.25rem, 80vw); }
+  .carousel {
+    display: block;
+  }
+
+  .carousel-inner {
+    width: min(100% - clamp(5.5rem, 18vw, 8rem), 34rem);
+    flex-direction: column;
+    align-items: center;
+    margin-inline: auto;
+  }
+
+  .poster-card {
+    width: min(16.25rem, 80vw);
+  }
 
   .arrow-btn {
-    align-self: flex-start;
-    transform: translateY(clamp(0.5rem, 4vw, 2.5rem));
+    position: absolute;
+    top: min(40vw, 10.25rem);
+    transform: translateY(-50%);
   }
 
   .arrow-btn:hover {
-    transform: translateY(clamp(0.5rem, 4vw, 2.5rem));
+    transform: translateY(-50%) scale(1.05);
   }
+
+  .arrow-btn--left { left: clamp(0.4rem, 2vw, 1rem); }
+  .arrow-btn--right { right: clamp(0.4rem, 2vw, 1rem); }
 
   .edge-stack--left  { left:  calc(var(--stack-w) * -0.75); }
   .edge-stack--right { right: calc(var(--stack-w) * -0.75); }
