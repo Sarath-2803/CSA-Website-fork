@@ -178,6 +178,9 @@ function Placements() {
           ))}
         </div>
       </div>
+      <p className="placement-disclaimer">
+        <span aria-hidden="true">*</span> Placement data for the 2026 batch.
+      </p>
     </main>
   );
 }
