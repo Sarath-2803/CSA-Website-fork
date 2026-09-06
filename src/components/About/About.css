@@ -10,6 +10,9 @@
 #about {
   scroll-margin-top: 0;
   background-color: #443741;
+  background-image: var(--csa-noise-image);
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
   color: #ffffff;
   width: 100%;
   position: relative;
@@ -22,7 +25,6 @@
   position: relative;
   height: 220vh;
   width: 100%;
-  background-color: #443741;
 }
 
 /* Sticky viewport starts below the fixed navbar */
@@ -37,7 +39,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding-top: clamp(0.6rem, 1.5vh, 1.2rem);
-  background-color: #443741;
+  background-color: transparent;
   box-sizing: border-box;
   z-index: 5;
 }

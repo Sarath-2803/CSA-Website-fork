@@ -74,6 +74,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg);
+  background-image: var(--csa-noise-image);
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
   color: var(--text);
   font-family: "Inter", sans-serif;
 }
@@ -91,20 +94,6 @@ a {
   position: relative;
   min-height: 100vh;
   overflow: clip;
-}
-
-.page-shell::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: var(--csa-noise-image);
-  background-size: 180px 180px;
-  background-repeat: repeat;
-  opacity: 0.28;
-  pointer-events: none;
-  z-index: 9999;
 }
 
 section[id] {
@@ -364,26 +353,17 @@ section[id] {
   gap: clamp(2rem, 4vw, 4.5rem);
   min-height: 100vh;
   padding: clamp(5.4rem, 8vw, 6.6rem) clamp(2rem, 5vw, 4.4rem) clamp(1.5rem, 3.5vw, 2.8rem);
-  background:
+  background-image:
     radial-gradient(
       circle at 72% 38%,
       rgba(184, 128, 116, 0.38),
       transparent 38%
     ),
     radial-gradient(circle at 18% 20%, rgba(72, 50, 68, 0.55), transparent 38%),
-    var(--bg);
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: clamp(60px, 10vh, 97px);
-  background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
-  pointer-events: none;
-  z-index: 2;
+    var(--csa-noise-image);
+  background-color: var(--bg);
+  background-size: auto, auto, 180px 180px;
+  background-blend-mode: normal, normal, multiply;
 }
 
 .hero-copy {

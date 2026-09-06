@@ -19,8 +19,6 @@
   mix-blend-mode: multiply;
   pointer-events: none;
   z-index: 1;
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7) 70%, black 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.7) 70%, black 100%);
 }
 
 .gallery-heading {

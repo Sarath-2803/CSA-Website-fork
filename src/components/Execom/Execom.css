@@ -5,6 +5,9 @@
   justify-content: center;
   padding: 44px 0 70px;
   background-color: #443741;
+  background-image: var(--csa-noise-image);
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
 }
 
 .execom-heading {
