@@ -93,6 +93,20 @@ a {
   overflow: clip;
 }
 
+.page-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: var(--csa-noise-image);
+  background-size: 180px 180px;
+  background-repeat: repeat;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 section[id] {
   scroll-margin-top: 5.8rem;
 }
