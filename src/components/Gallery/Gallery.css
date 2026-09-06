@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 0;
+  padding: 44px 0 70px;
   background: linear-gradient(180deg, #443741 0%, #5b4747 35%, #725a4f 70%, var(--csa-earth-bg) 100%);
   overflow: hidden;
 }
@@ -378,7 +378,7 @@
 @media (max-width: 640px) {
   .gallery-section {
     min-height: auto;
-    padding: 40px 0;
+    padding: 24px 0 36px;
   }
 
   .gallery-heading {
