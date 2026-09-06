@@ -312,7 +312,7 @@ section[id] {
   align-items: center;
   gap: clamp(2rem, 4vw, 4.5rem);
   min-height: 100vh;
-  padding: clamp(6.2rem, 10vw, 7.8rem) clamp(2rem, 5vw, 4.4rem) 2rem;
+  padding: clamp(5.4rem, 8vw, 6.6rem) clamp(2rem, 5vw, 4.4rem) clamp(1.5rem, 3.5vw, 2.8rem);
   background:
     radial-gradient(
       circle at 72% 38%,
@@ -329,7 +329,7 @@ section[id] {
   left: 0;
   right: 0;
   bottom: 0;
-  height: clamp(140px, 20vh, 260px);
+  height: clamp(60px, 10vh, 97px);
   background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
   pointer-events: none;
   z-index: 2;
@@ -414,8 +414,8 @@ section[id] {
     justify-items: center;
     gap: clamp(1.5rem, 3vw, 2.4rem);
     min-height: auto;
-    padding-top: 5.8rem;
-    padding-bottom: clamp(2.4rem, 5vw, 4rem);
+    padding-top: 5.2rem;
+    padding-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
   }
 
   .hero-copy {
@@ -454,7 +454,7 @@ section[id] {
     align-items: center;
     gap: 1.6rem;
     min-height: auto;
-    padding: 4.6rem var(--mobile-gutter) 2.5rem;
+    padding: 4.4rem var(--mobile-gutter) 1.8rem;
   }
 
   .hero-copy {

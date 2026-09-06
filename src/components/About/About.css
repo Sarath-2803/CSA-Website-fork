@@ -30,14 +30,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 5.5rem;
+  padding-top: clamp(3.2rem, 5vw, 4rem);
   background-color: #443741;
   box-sizing: border-box;
   z-index: 5;
 }
 
 /* -------------------------------------------------------------
-   Hero Header: AboutUs + Framing Lines + Pixel Dino
+   Hero Header: About Us + Framing Lines + Pixel Dino
    ------------------------------------------------------------- */
 .about-header-section {
   position: relative;
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(180px, 26vh, 260px);
+  height: clamp(130px, 17vh, 175px);
   flex-shrink: 0;
   user-select: none;
 }
@@ -62,8 +62,8 @@
 .about-main-title {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
-  font-size: clamp(4.4rem, 10vw, 9.6rem);
-  letter-spacing: -0.045em;
+  font-size: clamp(3.8rem, 8.2vw, 7.8rem);
+  letter-spacing: -0.05em;
   color: #ffffff;
   line-height: 0.95;
   margin: 0;
@@ -80,7 +80,7 @@
 .horizontal-top {
   left: 0;
   right: 0;
-  top: 34%;
+  top: 32%;
   height: 1.5px;
   z-index: 6;
 }
@@ -88,23 +88,23 @@
 .horizontal-bottom {
   left: 0;
   right: 0;
-  bottom: 8%;
+  bottom: 12%;
   height: 1.5px;
   z-index: 6;
 }
 
 .vertical-left {
   left: 0;
-  top: -24px;
-  bottom: -28px;
+  top: -20px;
+  bottom: -22px;
   width: 1.5px;
   z-index: 6;
 }
 
 .vertical-right {
   right: 0;
-  top: -24px;
-  bottom: -28px;
+  top: -20px;
+  bottom: -22px;
   width: 1.5px;
   z-index: 6;
 }
@@ -158,6 +158,7 @@
   align-items: center;
   overflow: hidden;
   box-sizing: border-box;
+  padding-top: clamp(0.5rem, 1.5vh, 1.2rem);
 }
 
 .about-track-content {
@@ -192,7 +193,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 0.5rem 3.5rem;
+  padding: clamp(0.6rem, 1.2vh, 1rem) 0.5rem clamp(1.8rem, 3.2vh, 2.6rem);
   box-sizing: border-box;
   position: relative;
   z-index: 2;
@@ -208,8 +209,8 @@
 
 /* White Circle Node */
 .about-circle-node {
-  width: clamp(145px, 12.5vw, 185px);
-  height: clamp(145px, 12.5vw, 185px);
+  width: clamp(130px, 11.5vw, 170px);
+  height: clamp(130px, 11.5vw, 170px);
   border-radius: 50%;
   background: #ffffff;
   display: flex;
@@ -229,8 +230,8 @@
 }
 
 .section-svg-icon {
-  width: clamp(56px, 4.8vw, 76px);
-  height: clamp(56px, 4.8vw, 76px);
+  width: clamp(50px, 4.4vw, 68px);
+  height: clamp(50px, 4.4vw, 68px);
   display: block;
 }
 
@@ -248,11 +249,11 @@
 .about-card-heading {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
-  font-size: clamp(2.3rem, 3.8vw, 4.3rem);
+  font-size: clamp(2.1rem, 3.4vw, 3.8rem);
   letter-spacing: -0.035em;
   color: #ffffff;
   line-height: 1.06;
-  margin: 0 0 1.1rem 0;
+  margin: 0 0 0.85rem 0;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
   user-select: none;
 }
@@ -260,8 +261,8 @@
 .about-card-desc {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  font-size: clamp(1.02rem, 1.2vw, 1.25rem);
-  line-height: 1.62;
+  font-size: clamp(0.98rem, 1.15vw, 1.18rem);
+  line-height: 1.58;
   color: rgba(255, 255, 255, 0.92);
   margin: 0;
   text-align: center;
@@ -272,15 +273,15 @@
    ------------------------------------------------------------- */
 @media (max-width: 900px) {
   .about-sticky-viewport {
-    padding-top: 5rem;
+    padding-top: 3.2rem;
   }
 
   .about-header-section {
-    height: 180px;
+    height: 140px;
   }
 
   .about-main-title {
-    font-size: clamp(3.2rem, 12vw, 5.2rem);
+    font-size: clamp(2.8rem, 10vw, 4.6rem);
   }
 
   .about-section-container {
@@ -290,48 +291,56 @@
   .about-section-card {
     width: clamp(300px, 75vw, 380px);
     margin-right: 3.5rem;
-    padding: 1rem 0.5rem 2rem;
+    padding: 0.6rem 0.5rem 1.6rem;
   }
 
   .about-circle-node {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
   }
 
   .section-svg-icon {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
   }
 
   .about-card-heading {
-    font-size: clamp(2rem, 6vw, 2.6rem);
-    margin-bottom: 0.75rem;
+    font-size: clamp(1.85rem, 5.5vw, 2.4rem);
+    margin-bottom: 0.65rem;
   }
 
   .about-card-desc {
-    font-size: 0.98rem;
-    line-height: 1.5;
+    font-size: 0.94rem;
+    line-height: 1.48;
   }
 }
 
 @media (max-width: 600px) {
+  .about-sticky-viewport {
+    padding-top: 2.8rem;
+  }
+
+  .about-header-section {
+    height: 120px;
+  }
+
   .about-track-content {
-    padding-left: 2rem;
-    padding-right: 4rem;
+    padding-left: 1.8rem;
+    padding-right: 3.5rem;
   }
 
   .about-section-card {
-    width: 290px;
-    margin-right: 2.2rem;
+    width: 280px;
+    margin-right: 2rem;
   }
 
   .about-circle-node {
-    width: 110px;
-    height: 110px;
+    width: 105px;
+    height: 105px;
   }
 
   .section-svg-icon {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 }

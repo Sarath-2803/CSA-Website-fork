@@ -233,7 +233,7 @@ export default function About() {
 
           <div className="about-title-container">
             <div className="about-grid-line vertical-left" />
-            <h1 className="about-main-title">AboutUs</h1>
+            <h1 className="about-main-title">About Us</h1>
             <div className="about-grid-line vertical-right" />
           </div>
 
