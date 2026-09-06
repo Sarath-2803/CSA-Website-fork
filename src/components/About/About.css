@@ -186,7 +186,7 @@
 /* -------------------------------------------------------------
    Mobile & Tablet Responsiveness
    ------------------------------------------------------------- */
-@media (max-width: 900px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   :root {
     --navbar-h: 4.7rem;
   }
@@ -228,47 +228,122 @@
   }
 }
 
-@media (max-width: 600px) {
+/* Mobile vertical stacked layout with connecting dashed timeline */
+@media (max-width: 768px) {
   :root {
-    --navbar-h: 4.3rem;
+    --navbar-h: 4.2rem;
+  }
+
+  .about-section-container {
+    height: auto !important;
+    min-height: auto;
+    padding-bottom: clamp(2.5rem, 6vh, 4rem);
+  }
+
+  .about-sticky-viewport {
+    position: relative !important;
+    top: 0 !important;
+    height: auto !important;
+    min-height: auto;
+    overflow: visible;
+    padding-top: 1rem;
+  }
+
+  .about-heading {
+    --csa-heading-line-top: -0.115em;
+    --csa-heading-line-bottom: 0.45em;
+    margin-bottom: 1.2rem;
   }
 
   #about .csa-heading-dino {
     right: 1.2rem;
   }
 
-  .about-section-container {
-    height: 180vh;
+  .about-track-viewport {
+    overflow: visible;
+    width: 100%;
+    padding: 1rem 0 0;
   }
 
   .about-track-content {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transform: none !important;
+    padding-left: clamp(1rem, 4vw, 1.5rem);
+    padding-right: clamp(1rem, 4vw, 1.5rem);
+    gap: 2.8rem;
+    box-sizing: border-box;
   }
 
+  .about-dashed-svg {
+    display: none;
+  }
+
+  /* Clean borderless vertical section on mobile — circle and text only */
   .about-section-card {
-    width: clamp(230px, 75vw, 290px);
-    height: 310px;
-    margin-right: 35px;
-    padding: 0.6rem 0.3rem;
+    position: relative;
+    width: min(100%, 24rem);
+    max-width: 92vw;
+    height: auto;
+    margin-right: 0 !important;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    box-sizing: border-box;
   }
 
+  /* Connecting dashed timeline line between vertically stacked sections */
+  .about-section-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -2.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2.2rem;
+    border-left: 2.2px dashed rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Ensure circle icon is consistently on top, text below on mobile */
   .about-circle-node {
-    width: 72px;
-    height: 72px;
+    order: 1;
+    width: 86px;
+    height: 86px;
+    flex-shrink: 0;
+  }
+
+  .about-card-text {
+    order: 2;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .section-svg-icon {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
   }
 
   .about-card-heading {
-    font-size: 1.4rem;
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+    margin: 0 0 0.4rem 0;
   }
 
   .about-card-desc {
-    font-size: 0.82rem;
-    line-height: 1.4;
+    font-size: 0.88rem;
+    line-height: 1.5;
   }
 }

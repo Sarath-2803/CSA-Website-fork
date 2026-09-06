@@ -127,6 +127,10 @@ export default function About() {
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current || !trackRef.current) return;
+      if (window.innerWidth <= 768) {
+        trackRef.current.style.transform = "none";
+        return;
+      }
       const container = containerRef.current;
       const track = trackRef.current;
       const rect = container.getBoundingClientRect();
@@ -158,7 +162,7 @@ export default function About() {
 
   useEffect(() => {
     const computeLines = () => {
-      if (!trackRef.current) return;
+      if (!trackRef.current || window.innerWidth <= 768) return;
 
       const trackEl = trackRef.current;
 

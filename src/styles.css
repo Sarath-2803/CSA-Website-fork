@@ -503,19 +503,27 @@ section[id] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.6rem;
-    min-height: auto;
-    padding: 4.4rem var(--mobile-gutter) 1.8rem;
-  }
-
-  .hero-copy {
-    width: min(100%, 34rem);
-    padding-top: 1rem;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vh, 1.4rem);
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    padding: clamp(4.4rem, 8vh, 5.4rem) var(--mobile-gutter) clamp(1.4rem, 2.5vh, 2.2rem);
     text-align: center;
   }
 
+  .hero-copy {
+    width: min(100%, 32rem);
+    padding-top: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .hero-copy h1 {
-    font-size: clamp(2rem, 12vw, 3.5rem);
+    font-size: clamp(2rem, 9.5vw, 3.2rem);
+    line-height: 0.92;
     text-align: center;
     width: 100%;
     margin-inline: auto;
@@ -523,13 +531,14 @@ section[id] {
   }
 
   .hero-copy p {
-    font-size: 0.95rem;
-    margin-top: 1.2rem;
+    font-size: clamp(0.85rem, 3vw, 0.95rem);
+    line-height: 1.55;
+    margin: clamp(0.6rem, 1.5vh, 1rem) auto 0;
+    max-width: 26rem;
+    text-align: center;
   }
 
   .cta {
-    margin-top: 1.5rem;
+    margin-top: clamp(0.9rem, 1.8vh, 1.4rem);
   }
-
-
 }
