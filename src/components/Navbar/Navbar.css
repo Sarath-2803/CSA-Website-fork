@@ -107,7 +107,8 @@
   z-index: 20;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  justify-self: start;
   color: var(--text);
 }
 
