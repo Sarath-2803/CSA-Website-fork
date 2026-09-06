@@ -6,6 +6,7 @@ import About from "./components/About/About";
 import Gallery from "./components/Gallery/Gallery";
 import Execom from "./components/Execom/Execom";
 import Resources from "./components/Resources/Resources";
+import ResourcePost from "./pages/ResourcePost/ResourcePost";
 import AlumniInsightPost from "./pages/AlumniInsightPost/AlumniInsightPost";
 import AlumniInsights from "./components/AlumniInsights/AlumniInsights";
 import Placements from "./components/Placements/Placements";
@@ -126,6 +127,12 @@ function AlumniPostRoute() {
   return <AlumniInsightPost slug={slug} />;
 }
 
+function ResourcePostRoute() {
+  const { slug } = useParams();
+
+  return <ResourcePost slug={slug} />;
+}
+
 function App() {
   return (
     <main className="page-shell">
@@ -136,6 +143,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/alumni-insights/:slug" element={<AlumniPostRoute />} />
+        <Route path="/resources/:slug" element={<ResourcePostRoute />} />
       </Routes>
     </main>
   );

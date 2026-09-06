@@ -1,9 +1,14 @@
 import styles from './Resources.module.css';
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import skills from './skills';
 
 const resources = [
   { name: 'Academics', subResources: [{ name: 'Notes', children: [{ name: 'Year 1', link: 'https://drive.google.com/drive/folders/1upBa26qyFiXwrJ8fSnwcl5NPlDFmzZc6?usp=drive_link' }, { name: 'Year 2', link: 'https://drive.google.com/drive/folders/1PA63qS4y6VP_1Hj7_jf1t0ze2O2XCrjR?usp=drive_link' }, { name: 'Year 3', link: 'https://drive.google.com/drive/folders/1WyXtpGWIneR3RyiEBZ3SOydcvSlUpv4o?usp=drive_link' }] }, { name: 'Gate Prep', link: 'https://drive.google.com/drive/folders/1rj0kTkSZ8j_g1oGFlKQqR7J_i-bbdhvS' }, { name: 'Study Help Guide', link: 'https://docs.google.com/document/d/1TAe7Kq8E2Xv7J4ITHQ0IVUfYA5fHqekZ/edit?usp=drive_link&ouid=103309018449688798459&rtpof=true&sd=true' }] },
-  { name: 'Skill Development', subResources: [{ name: 'Coding', link: '#' }, { name: 'Designing', link: '#' }, { name: 'Public Speaking', link: '#' }] },
+  {
+    name: 'Skill Development',
+    subResources: skills
+  },
 ]
 
 export default function Resources() {
@@ -56,8 +61,8 @@ export default function Resources() {
                 </h2>
                 <div className={styles['toggle-icon-container']}>
                   <span className={styles['toggle-icon-main']} aria-hidden="true">
-                  ▸
-                </span>
+                    {isOpen ? '▾' : '▸'}
+                  </span>
                 </div>
               </button>
 
@@ -99,9 +104,21 @@ export default function Resources() {
                             </div>
                           )}
                         </>
+                      ) : subResource.slug ? (
+                        <div className={styles['sub-resource-item']}>
+                          <span className={styles.dot}></span>
+
+                          <Link
+                            to={`/resources/${subResource.slug}`}
+                            className={styles['sub-resource-name']}
+                          >
+                            {subResource.name}
+                          </Link>
+                        </div>
                       ) : (
                         <div className={styles['sub-resource-item']}>
                           <span className={styles.dot}></span>
+
                           <a
                             href={subResource.link}
                             target="_blank"
