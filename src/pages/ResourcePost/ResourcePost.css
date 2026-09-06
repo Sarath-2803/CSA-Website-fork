@@ -15,7 +15,7 @@
 .resource-post-back {
     display: inline-flex;
     width: max-content;
-    /* padding-top: 50px; */
+    padding-top: 50px;
     margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
     border-bottom: 2px solid var(--csa-earth-text);
     color: var(--csa-earth-text);
@@ -229,7 +229,7 @@
 
 @media (max-width: 640px) {
     .resource-post-page {
-        padding: 1.5rem 0 0;
+        padding: 150px 0 0;
     }
 
     .resource-post {
