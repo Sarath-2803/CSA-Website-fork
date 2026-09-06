@@ -11,6 +11,7 @@ import AlumniInsights from "./components/AlumniInsights/AlumniInsights";
 import Placements from "./components/Placements/Placements";
 import Help from "./components/Help/Help";
 import Achievements from "./components/Achievements/Achievements";
+import { scrollToSection } from "./utils/scroll";
 import "./styles.css";
 
 function ScrollToHash() {
@@ -22,17 +23,9 @@ function ScrollToHash() {
       return;
     }
 
-    const scrollToElement = () => {
-      const target = document.getElementById(hash.slice(1));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        return true;
-      }
-      return false;
-    };
-
-    if (!scrollToElement()) {
-      const timer = setTimeout(scrollToElement, 100);
+    const targetId = hash.slice(1);
+    if (!scrollToSection(targetId, "smooth")) {
+      const timer = setTimeout(() => scrollToSection(targetId, "smooth"), 100);
       return () => clearTimeout(timer);
     }
   }, [hash, pathname]);
@@ -79,7 +72,15 @@ function HomePage() {
             with the department, access resources, opportunities and updates.
           </p>
 
-          <a className="cta" href="#about">
+          <a
+            className="cta"
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("about", "smooth");
+              window.history.pushState(null, "", "/#about");
+            }}
+          >
             Explore <span aria-hidden="true">→</span>
           </a>
         </div>

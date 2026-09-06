@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { scrollToSection } from "../../utils/scroll";
 import csaLogo from "../../assets/csa_logo.svg";
 import "./Navbar.css";
 
@@ -19,12 +20,36 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isEarthTheme, setIsEarthTheme] = useState(false);
 
+  const location = useLocation();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleNavClick = (e, item) => {
+    closeMenu();
+    const targetId = item.toLowerCase();
+
+    if (location.pathname === "/") {
+      e.preventDefault();
+      scrollToSection(targetId, "smooth");
+      window.history.pushState(null, "", getSectionHref(item));
+      setActiveSection(targetId);
+    }
+  };
+
+  const handleBrandClick = (e) => {
+    closeMenu();
+    if (location.pathname === "/") {
+      e.preventDefault();
+      scrollToSection("home", "smooth");
+      window.history.pushState(null, "", "/#home");
+      setActiveSection("");
+    }
   };
 
   useEffect(() => {
@@ -120,6 +145,7 @@ function Navbar() {
         <Link
           className="brand"
           to="/#home"
+          onClick={handleBrandClick}
           aria-label="Computer Science Association CET home"
         >
           <img src={csaLogo} alt="CSA Logo" className="brand-logo" />
@@ -134,7 +160,7 @@ function Navbar() {
               key={item}
               to={getSectionHref(item)}
               className={`nav-pill ${activeSection === item.toLowerCase() ? "active" : ""}`}
-              onClick={closeMenu}
+              onClick={(e) => handleNavClick(e, item)}
             >
               {item}
             </Link>
