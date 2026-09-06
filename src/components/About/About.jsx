@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import dinoSvg from "../../assets/dino.svg";
 import "./About.css";
 
 const sectionsData = [
@@ -123,7 +122,6 @@ export default function About() {
   const trackRef = useRef(null);
   const circleRefs = useRef([]);
   const [lines, setLines] = useState([]);
-  const [isDinoJumping, setIsDinoJumping] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -206,38 +204,31 @@ export default function About() {
     };
   }, []);
 
-  const handleDinoClick = () => {
-    if (isDinoJumping) return;
-    setIsDinoJumping(true);
-    setTimeout(() => setIsDinoJumping(false), 650);
-  };
-
   return (
     <section id="about" ref={containerRef} className="about-section-container">
       <div className="about-sticky-viewport">
-        {/* Header Section */}
-        <div className="about-header-section">
-          <div className="about-grid-line horizontal-top">
-            <div
-              className="about-dino-wrapper"
-              title="Click me to jump!"
-              onClick={handleDinoClick}
-            >
-              <img
-                src={dinoSvg}
-                alt="CSA 8-bit Dino"
-                className={`about-dino-sprite ${isDinoJumping ? "dino-jumping" : ""}`}
-              />
-            </div>
+        {/* Header Section matching Execom / Placements / Gallery */}
+        <div className="csa-section-heading about-heading">
+          <svg
+            className="csa-heading-dino"
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            title="Click me to jump!"
+          >
+            <path
+              d="M30.8 0V2.8H28V19.6H25.2V22.4H19.6V25.2H16.8V28H14V30.8H8.4V28H5.6V25.2H2.8V19.6H0V36.4H2.8V39.2H5.6V42H8.4V44.8H11.2V56H16.8V53.2H14V50.4H16.8V47.6H19.6V44.8H22.4V47.6H25.2V56H30.8V53.2H28V42H30.8V39.2H33.6V36.4H36.4V28H39.2V30.8H42V25.2H36.4V19.6H50.4V16.8H42V14H56V2.8H53.2V0M33.6 2.8H36.4V5.6H33.6V2.8Z"
+              fill="currentColor"
+            />
+          </svg>
+          <div className="csa-section-heading-frame">
+            <span className="csa-section-heading-line" />
+            <h1 className="csa-section-heading-title">About Us</h1>
+            <span className="csa-section-heading-line" />
           </div>
-
-          <div className="about-title-container">
-            <div className="about-grid-line vertical-left" />
-            <h1 className="about-main-title">About Us</h1>
-            <div className="about-grid-line vertical-right" />
-          </div>
-
-          <div className="about-grid-line horizontal-bottom" />
         </div>
 
         {/* Horizontal Track Viewport */}

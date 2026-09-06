@@ -37,114 +37,14 @@
 }
 
 /* -------------------------------------------------------------
-   Hero Header: About Us + Framing Lines + Pixel Dino
+   Heading: matches Execom, Placements, Gallery etc.
    ------------------------------------------------------------- */
-.about-header-section {
+.about-heading {
   position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: clamp(130px, 17vh, 175px);
+  z-index: 2;
+  --csa-earth-text: #f8f6f4;
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
   flex-shrink: 0;
-  user-select: none;
-}
-
-.about-title-container {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.2rem;
-  z-index: 5;
-}
-
-.about-main-title {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 800;
-  font-size: clamp(3.8rem, 8.2vw, 7.8rem);
-  letter-spacing: -0.05em;
-  color: #ffffff;
-  line-height: 0.95;
-  margin: 0;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
-}
-
-/* Construction Grid Lines */
-.about-grid-line {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.76);
-  pointer-events: none;
-}
-
-.horizontal-top {
-  left: 0;
-  right: 0;
-  top: 32%;
-  height: 1.5px;
-  z-index: 6;
-}
-
-.horizontal-bottom {
-  left: 0;
-  right: 0;
-  bottom: 12%;
-  height: 1.5px;
-  z-index: 6;
-}
-
-.vertical-left {
-  left: 0;
-  top: -20px;
-  bottom: -22px;
-  width: 1.5px;
-  z-index: 6;
-}
-
-.vertical-right {
-  right: 0;
-  top: -20px;
-  bottom: -22px;
-  width: 1.5px;
-  z-index: 6;
-}
-
-/* Dino standing on top horizontal line */
-.about-dino-wrapper {
-  position: absolute;
-  right: clamp(2rem, 8vw, 8rem);
-  bottom: 1.5px;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 10;
-  transition: transform 0.15s ease;
-}
-
-.about-dino-sprite {
-  width: clamp(42px, 3.2vw, 56px);
-  height: auto;
-  display: block;
-  transform-origin: bottom center;
-}
-
-.about-dino-wrapper:hover .about-dino-sprite {
-  transform: scale(1.1);
-}
-
-@keyframes dinoJumpKeyframes {
-  0% {
-    transform: translateY(0);
-  }
-  45% {
-    transform: translateY(-42px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.about-dino-sprite.dino-jumping {
-  animation: dinoJumpKeyframes 0.65s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 /* -------------------------------------------------------------
@@ -276,12 +176,8 @@
     padding-top: 3.2rem;
   }
 
-  .about-header-section {
-    height: 140px;
-  }
-
-  .about-main-title {
-    font-size: clamp(2.8rem, 10vw, 4.6rem);
+  .about-heading {
+    margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
   }
 
   .about-section-container {
@@ -320,8 +216,8 @@
     padding-top: 2.8rem;
   }
 
-  .about-header-section {
-    height: 120px;
+  .about-heading {
+    margin-bottom: 0.8rem;
   }
 
   .about-track-content {

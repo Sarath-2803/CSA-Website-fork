@@ -215,11 +215,11 @@ section[id] {
   z-index: 2;
   display: block;
   color: var(--csa-earth-text);
-  pointer-events: none;
 }
 
 .csa-heading-disk {
   display: none;
+  pointer-events: none;
 }
 
 .csa-heading-dino {
@@ -229,6 +229,30 @@ section[id] {
   right: clamp(4.4rem, 11vw, 11.2rem);
   top: calc(50% + var(--csa-heading-line-top));
   transform: translateY(calc(-100% + 2px));
+  cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
+  transition: transform 0.15s ease;
+}
+
+.csa-heading-dino:hover {
+  transform: translateY(calc(-100% + 2px)) scale(1.1);
+}
+
+.csa-heading-dino.dino-jumping {
+  animation: csaDinoJumpKeyframes 0.65s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes csaDinoJumpKeyframes {
+  0% {
+    transform: translateY(calc(-100% + 2px));
+  }
+  45% {
+    transform: translateY(calc(-100% - 32px));
+  }
+  100% {
+    transform: translateY(calc(-100% + 2px));
+  }
 }
 
 .csa-heading-disk {
@@ -270,6 +294,18 @@ section[id] {
     --csa-heading-disk-size: clamp(0.95rem, 5vw, 1.45rem);
     top: clamp(-1.35rem, -5vw, -0.8rem);
     right: clamp(0.55rem, 4vw, 1.25rem);
+  }
+
+  @keyframes csaDinoJumpKeyframes {
+    0% {
+      transform: translateY(calc(-100% + 2px));
+    }
+    45% {
+      transform: translateY(calc(-100% - 18px));
+    }
+    100% {
+      transform: translateY(calc(-100% + 2px));
+    }
   }
 }
 

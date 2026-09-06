@@ -40,6 +40,22 @@ function ScrollToHash() {
   return null;
 }
 
+function DinoJumpHandler() {
+  useEffect(() => {
+    const handleDinoClick = (e) => {
+      const dino = e.target.closest(".csa-heading-dino");
+      if (!dino || dino.classList.contains("dino-jumping")) return;
+      dino.classList.add("dino-jumping");
+      setTimeout(() => dino.classList.remove("dino-jumping"), 650);
+    };
+
+    document.addEventListener("click", handleDinoClick);
+    return () => document.removeEventListener("click", handleDinoClick);
+  }, []);
+
+  return null;
+}
+
 function HomePage() {
   return (
     <>
@@ -113,6 +129,7 @@ function App() {
   return (
     <main className="page-shell">
       <ScrollToHash />
+      <DinoJumpHandler />
       <Navbar />
 
       <Routes>
