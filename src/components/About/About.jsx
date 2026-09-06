@@ -122,6 +122,7 @@ export default function About() {
   const trackRef = useRef(null);
   const circleRefs = useRef([]);
   const [lines, setLines] = useState([]);
+  const [svgSize, setSvgSize] = useState({ w: 3000, h: 800 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,13 +160,29 @@ export default function About() {
     const computeLines = () => {
       if (!trackRef.current) return;
 
+      const trackEl = trackRef.current;
+
+      // Temporarily reset transform so positions are measured at rest (x=0)
+      const prevTransform = trackEl.style.transform;
+      trackEl.style.transform = "translate3d(0, 0, 0)";
+
+      // Force reflow
+      void trackEl.offsetLeft;
+
+      const trackRect = trackEl.getBoundingClientRect();
+      const scrollW = trackEl.scrollWidth;
+      const scrollH = trackEl.clientHeight || window.innerHeight;
+
+      setSvgSize({ w: scrollW, h: scrollH });
+
       const newLines = [];
       const circles = circleRefs.current.map((el) => {
         if (!el) return null;
+        const r = el.getBoundingClientRect();
         return {
-          x: el.offsetLeft + el.offsetWidth / 2,
-          y: el.offsetTop + el.offsetHeight / 2,
-          r: el.offsetWidth / 2,
+          x: r.left - trackRect.left + r.width / 2,
+          y: r.top - trackRect.top + r.height / 2,
+          r: r.width / 2,
         };
       });
 
@@ -177,32 +194,36 @@ export default function About() {
           const dy = c2.y - c1.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist > 0) {
-            const x1 = c1.x + (dx / dist) * (c1.r + 6);
-            const y1 = c1.y + (dy / dist) * (c1.r + 6);
-            const x2 = c2.x - (dx / dist) * (c2.r + 6);
-            const y2 = c2.y - (dy / dist) * (c2.r + 6);
-            newLines.push({
-              id: `line-${i}`,
-              x1,
-              y1,
-              x2,
-              y2,
-            });
+            const x1 = c1.x + (dx / dist) * (c1.r + 8);
+            const y1 = c1.y + (dy / dist) * (c1.r + 8);
+            const x2 = c2.x - (dx / dist) * (c2.r + 8);
+            const y2 = c2.y - (dy / dist) * (c2.r + 8);
+            newLines.push({ id: `line-${i}`, x1, y1, x2, y2 });
           }
         }
       }
 
       setLines(newLines);
+
+      // Restore the actual scroll transform
+      trackEl.style.transform = prevTransform;
     };
 
+    // Fire immediately, then retry after layout has fully settled
     computeLines();
-    const timer = setTimeout(computeLines, 150);
+    const t1 = setTimeout(computeLines, 100);
+    const t2 = setTimeout(computeLines, 400);
+    const t3 = setTimeout(computeLines, 800);
+
     window.addEventListener("resize", computeLines);
     return () => {
-      clearTimeout(timer);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
       window.removeEventListener("resize", computeLines);
     };
   }, []);
+
 
   return (
     <section id="about" ref={containerRef} className="about-section-container">
@@ -234,8 +255,13 @@ export default function About() {
         {/* Horizontal Track Viewport */}
         <div className="about-track-viewport">
           <div ref={trackRef} className="about-track-content">
-            {/* SVG for connecting dashed lines */}
-            <svg className="about-dashed-svg" aria-hidden="true">
+            {/* SVG for connecting dashed lines — spans full track scroll width */}
+            <svg
+              className="about-dashed-svg"
+              aria-hidden="true"
+              width={svgSize.w}
+              height={svgSize.h}
+            >
               {lines.map((l) => (
                 <line
                   key={l.id}
