@@ -2,7 +2,8 @@
   display: grid;
   align-items: start;
   justify-items: center;
-  padding-inline: clamp(1.25rem, 5vw, 4rem);
+  /* padding-inline: clamp(1.25rem, 5vw, 4rem); */
+  padding: 50px clamp(1.25rem, 5vw, 4rem) 0;
 }
 
 .alumni-post {
@@ -15,7 +16,6 @@
 .alumni-post-back {
   display: inline-flex;
   width: max-content;
-  padding-top: 50px;
   margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
   border-bottom: 2px solid var(--csa-earth-text);
   color: var(--csa-earth-text);

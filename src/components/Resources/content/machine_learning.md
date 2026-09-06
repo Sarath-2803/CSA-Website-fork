@@ -52,10 +52,11 @@ There are a few different paradigms for machine learning — supervised, semisup
 
 
 
-<!-- Start of picture text -->
-Garbage in Garbage Out<br>This single phrase underpins almost the entirety of machine learning. The<br>quality of the data used to train a model dictates the quality of the model and<br>its outputs. There is no way around this and as such, studying the data,<br>cleaning it and identifying the most relevant attributes holds utmost<br>importance.<br><!-- End of picture text -->
+> #### " Garbage in Garbage Out
+>
+> This single phrase underpins almost the entirety of machine learning. The quality of the data used to train a model dictates the quality of the model and its outputs. There is no way around this and as such, studying the data, cleaning it and identifying the most relevant attributes holds utmost importance.
 
-While we're on the subject of data, I shall gloss over some important practices that revolve around data. Many of these concepts and practices are part of the broader Machine Learning Development Life Cycle — the ML lifecycle for short. 
+While we're on the subject of data, I shall gloss over some important practices that revolve around data. Many of these concepts and practices are part of the broader    Machine Learning Development Life Cycle — the ML lifecycle for short. 
 
 First, we need to source the data; if you're working on problems which have been studied for a considerably long time, then you may be in luck since platforms like Kaggle often have a wide range of datasets with different characteristics. On the other 
 
@@ -73,9 +74,9 @@ Now that we have some idea of the landscape surrounding machine learning, let's 
 
 At its core, a machine learning model is a function that takes some input and produces an output. In mathematical terms, we can loosely represent this as 
 
-#### ^ y = fθ(x) 
+> ŷ = fθ(x)
 
-where x is the input, y^ is the prediction, and θ represents the parameters of the model. In a neural network, these parameters primarily consist of weights and biases. The architecture of the model determines how these parameters are arranged and how information flows through them. 
+where x is the input, ŷ is the prediction, and θ represents the parameters of the model. In a neural network, these parameters primarily consist of weights and biases. The architecture of the model determines how these parameters are arranged and how information flows through them. 
 
 The machine doesn't inherently understand the information we give it, however. Images, text, audio and other forms of real-world information need to be represented in a mathematical form that the model can work with. This is where things such as feature engineering, encoding, normalization and, in modern deep learning, learned representations such as embeddings come into play. 
 
@@ -83,10 +84,10 @@ The machine doesn't inherently understand the information we give it, however. I
 
 Once the input has been represented appropriately, it can be passed through the model to produce a prediction. In a simple neuron, this might look something like 
 
-
+> z = Wx+b
 
 followed by an activation function, 
-
+> a = σ(z)
 
 
 A neural network essentially performs these transformations repeatedly across its layers. This process of taking an input through the model to produce an output is called the forward pass. 
@@ -95,8 +96,9 @@ But producing a prediction isn't learning. We also need some way of determining 
 
 #### Knowing When It's Wrong 
 
-This is where the loss function comes in. A loss function measures the discrepancy between the model's prediction and the desired output: 
+This is where the loss function comes in. A loss function measures the discrepancy between the model's prediction and the desired output:  
 
+> L(y, ŷ)
 
 
 The choice of loss depends on the problem being solved. Predicting a continuous value, determining which of several classes an input belongs to, and generating a sequence of tokens are fundamentally different tasks and therefore require different ways of measuring error. 
@@ -109,13 +111,13 @@ This is where the mathematics we encountered earlier starts to become useful.
 
 The model contains parameters, and changing those parameters changes its predictions. We therefore want to know how sensitive the loss is to each parameter. This is expressed through gradients such as 
 
-
+> ∂L / ∂θ
 
 which tell us the direction and magnitude in which a parameter influences the loss. 
 
 Backpropagation is the procedure used to efficiently calculate these gradients throughout a neural network. An optimizer then uses the gradients to update the model's parameters, with the learning rate controlling the size of those updates. A simplified gradient descent update looks like 
 
-θt+1 = θt − η∇θL 
+> θₜ₊₁ = θₜ − η ∇θ L
 
 And this is, in essence, where the learning happens: the model repeatedly adjusts its parameters based on the errors it makes. 
 
@@ -133,9 +135,9 @@ This is where train, validation and test sets, evaluation metrics such as accura
 
 As we come to the end of this ~~short~~ article I'd like to leave you with an idea and a few resources that should help you get started. 
 
-#### Occam's Razor 
-
-Entities should not be multiplied beyond necessity. 
+> #### " Occam's Razor
+>
+> Entities should not be multiplied beyond necessity.
 
 Occam's Razor in the context of machine learning implies that the less complex an ML model, the more likely that a good empirical result is not just due to the 
 
