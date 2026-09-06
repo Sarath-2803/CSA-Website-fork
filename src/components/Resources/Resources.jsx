@@ -56,7 +56,7 @@ export default function Resources() {
                 </h2>
                 <div className={styles['toggle-icon-container']}>
                   <span className={styles['toggle-icon-main']} aria-hidden="true">
-                  {isOpen ? '▾' : '▸'}
+                  ▸
                 </span>
                 </div>
               </button>
@@ -74,7 +74,7 @@ export default function Resources() {
                             aria-expanded={openNotes}
                           >
                             <span className={styles['toggle-icon']} aria-hidden="true">
-                              {openNotes ? '▾' : '▸'}
+                              ▸
                             </span>
                             <span className={styles['sub-resource-name']}>
                               {subResource.name}

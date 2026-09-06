@@ -196,11 +196,6 @@
 }
 
 @media screen and (max-width: 980px) {
-  .help-page.csa-earth-section {
-    padding-top: clamp(2rem, 4vw, 3rem);
-    padding-bottom: calc(clamp(2.4rem, 4.5vw, 3.4rem) + 4rem);
-  }
-
   .help-heading {
     padding-bottom: clamp(0.75rem, 1.2vw, 1.1rem);
   }
@@ -223,11 +218,6 @@
 }
 
 @media screen and (max-width: 640px) {
-  .help-page.csa-earth-section {
-    padding-top: clamp(2.4rem, 8vw, 3.2rem);
-    padding-bottom: calc(clamp(2.7rem, 9vw, 3.6rem) + 4rem);
-  }
-
   .description {
     width: min(90%, 26rem);
     margin: 1rem 0 1.6rem;
