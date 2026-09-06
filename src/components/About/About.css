@@ -1,0 +1,351 @@
+/* -------------------------------------------------------------
+   About Section on Single Landing Page
+   ------------------------------------------------------------- */
+
+/* Navbar height token — reduce if gap between navbar and heading is visible */
+:root {
+  --navbar-h: 3.8rem; /* actual rendered navbar height (logo-driven, not padding-driven) */
+}
+
+#about {
+  scroll-margin-top: 0;
+  background-color: #443741;
+  background-image: var(--csa-noise-image);
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
+  color: #ffffff;
+  width: 100%;
+  position: relative;
+  overflow-x: clip;
+  font-family: "Inter", sans-serif;
+}
+
+/* Outer container provides scroll travel space for pinned horizontal effect */
+.about-section-container {
+  position: relative;
+  height: 220vh;
+  width: 100%;
+}
+
+/* Sticky viewport starts below the fixed navbar */
+.about-sticky-viewport {
+  position: sticky;
+  top: var(--navbar-h);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--navbar-h));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: clamp(0.6rem, 1.5vh, 1.2rem);
+  background-color: transparent;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+/* -------------------------------------------------------------
+   Heading: matches Execom, Placements, Gallery etc.
+   ------------------------------------------------------------- */
+.about-heading {
+  position: relative;
+  z-index: 2;
+  --csa-earth-text: #f8f6f4;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+#about .csa-heading-dino {
+  right: clamp(3rem, 7vw, 7rem);
+}
+
+/* -------------------------------------------------------------
+   Horizontal Track Viewport
+   ------------------------------------------------------------- */
+.about-track-viewport {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: clamp(0.4rem, 1vh, 0.8rem);
+  padding-bottom: 0;
+}
+
+.about-track-content {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  padding-left: clamp(2rem, 4vw, 3.5rem);
+  padding-right: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+/* Dynamic dashed connection line between circles */
+.about-dashed-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Section Card — ~35vw wide to show 2 cards + peek of 3rd at scroll start */
+.about-section-card {
+  width: clamp(290px, 35vw, 480px);
+  flex-shrink: 0;
+  margin-right: clamp(50px, 8vw, 100px);
+  height: clamp(340px, 50vh, 420px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.6rem, 1.5vh, 1.2rem) 0.5rem;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.about-section-card:last-child {
+  margin-right: 0;
+}
+
+.card-circle-top {
+  justify-content: space-between;
+}
+
+.card-circle-bottom {
+  justify-content: space-between;
+}
+
+/* White Circle Node */
+.about-circle-node {
+  width: clamp(95px, 8.5vw, 120px);
+  height: clamp(95px, 8.5vw, 120px);
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  flex-shrink: 0;
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s ease;
+  user-select: none;
+}
+
+.about-circle-node:hover {
+  transform: scale(1.06);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+}
+
+.section-svg-icon {
+  width: clamp(38px, 3.4vw, 48px);
+  height: clamp(38px, 3.4vw, 48px);
+  display: block;
+}
+
+/* Card Text Styling */
+.about-card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 420px;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+.about-card-heading {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.85rem, 3.2vw, 3.2rem);
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  line-height: 1.08;
+  margin: 0 0 0.45rem 0;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  user-select: none;
+}
+
+.about-card-desc {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------
+   Mobile & Tablet Responsiveness
+   ------------------------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --navbar-h: 4.7rem;
+  }
+
+  .about-section-container {
+    height: 200vh;
+  }
+
+  .about-track-content {
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+  }
+
+  .about-section-card {
+    width: clamp(260px, 65vw, 400px);
+    height: clamp(320px, 48vh, 390px);
+    margin-right: clamp(40px, 7vw, 70px);
+    padding: 0.8rem 0.4rem;
+  }
+
+  .about-circle-node {
+    width: 85px;
+    height: 85px;
+  }
+
+  .section-svg-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .about-card-heading {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    margin-bottom: 0.35rem;
+  }
+
+  .about-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.44;
+  }
+}
+
+/* Mobile vertical stacked layout with connecting dashed timeline */
+@media (max-width: 768px) {
+  :root {
+    --navbar-h: 4.2rem;
+  }
+
+  .about-section-container {
+    height: auto !important;
+    min-height: auto;
+    padding-bottom: clamp(2.5rem, 6vh, 4rem);
+  }
+
+  .about-sticky-viewport {
+    position: relative !important;
+    top: 0 !important;
+    height: auto !important;
+    min-height: auto;
+    overflow: visible;
+    padding-top: 1rem;
+  }
+
+  .about-heading {
+    --csa-heading-line-top: -0.115em;
+    --csa-heading-line-bottom: 0.45em;
+    margin-bottom: 1.2rem;
+  }
+
+  #about .csa-heading-dino {
+    right: 1.2rem;
+  }
+
+  .about-track-viewport {
+    overflow: visible;
+    width: 100%;
+    padding: 1rem 0 0;
+  }
+
+  .about-track-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transform: none !important;
+    padding-left: clamp(1rem, 4vw, 1.5rem);
+    padding-right: clamp(1rem, 4vw, 1.5rem);
+    gap: 2.8rem;
+    box-sizing: border-box;
+  }
+
+  .about-dashed-svg {
+    display: none;
+  }
+
+  /* Clean borderless vertical section on mobile — circle and text only */
+  .about-section-card {
+    position: relative;
+    width: min(100%, 24rem);
+    max-width: 92vw;
+    height: auto;
+    margin-right: 0 !important;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    box-sizing: border-box;
+  }
+
+  /* Connecting dashed timeline line between vertically stacked sections */
+  .about-section-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -2.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2.2rem;
+    border-left: 2.2px dashed rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Ensure circle icon is consistently on top, text below on mobile */
+  .about-circle-node {
+    order: 1;
+    width: 86px;
+    height: 86px;
+    flex-shrink: 0;
+  }
+
+  .about-card-text {
+    order: 2;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-svg-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .about-card-heading {
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .about-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+}

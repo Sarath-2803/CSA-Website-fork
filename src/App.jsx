@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import HeroArtwork from "./components/HeroArtwork/HeroArtwork";
 import Navbar from "./components/Navbar/Navbar";
+import About from "./components/About/About";
 import Gallery from "./components/Gallery/Gallery";
 import Execom from "./components/Execom/Execom";
 import Resources from "./components/Resources/Resources";
@@ -11,6 +12,7 @@ import AlumniInsights from "./components/AlumniInsights/AlumniInsights";
 import Placements from "./components/Placements/Placements";
 import Help from "./components/Help/Help";
 import Achievements from "./components/Achievements/Achievements";
+import { scrollToSection } from "./utils/scroll";
 import "./styles.css";
 
 function ScrollToHash() {
@@ -22,11 +24,28 @@ function ScrollToHash() {
       return;
     }
 
-    const target = document.getElementById(hash.slice(1));
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    const targetId = hash.slice(1);
+    if (!scrollToSection(targetId, "smooth")) {
+      const timer = setTimeout(() => scrollToSection(targetId, "smooth"), 100);
+      return () => clearTimeout(timer);
     }
   }, [hash, pathname]);
+
+  return null;
+}
+
+function DinoJumpHandler() {
+  useEffect(() => {
+    const handleDinoClick = (e) => {
+      const dino = e.target.closest(".csa-heading-dino");
+      if (!dino || dino.classList.contains("dino-jumping")) return;
+      dino.classList.add("dino-jumping");
+      setTimeout(() => dino.classList.remove("dino-jumping"), 650);
+    };
+
+    document.addEventListener("click", handleDinoClick);
+    return () => document.removeEventListener("click", handleDinoClick);
+  }, []);
 
   return null;
 }
@@ -54,13 +73,23 @@ function HomePage() {
             with the department, access resources, opportunities and updates.
           </p>
 
-          <a className="cta" href="#about">
+          <a
+            className="cta"
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("about", "smooth");
+              window.history.pushState(null, "", "/#about");
+            }}
+          >
             Explore <span aria-hidden="true">→</span>
           </a>
         </div>
 
         <HeroArtwork />
       </section>
+
+      <About />
 
       <section id="execom">
         <Execom />
@@ -79,15 +108,15 @@ function HomePage() {
           <Placements />
           <AlumniInsights />
         </section>
+
+        <section id="resources">
+          <Resources />
+        </section>
+
+        <section id="help">
+          <Help />
+        </section>
       </div>
-
-      <section id="resources">
-        <Resources />
-      </section>
-
-      <section>
-        <Help />
-      </section>
     </>
   );
 }
@@ -108,6 +137,7 @@ function App() {
   return (
     <main className="page-shell">
       <ScrollToHash />
+      <DinoJumpHandler />
       <Navbar />
 
       <Routes>
