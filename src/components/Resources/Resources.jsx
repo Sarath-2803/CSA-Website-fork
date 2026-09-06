@@ -79,7 +79,7 @@ export default function Resources() {
                             aria-expanded={openNotes}
                           >
                             <span className={styles['toggle-icon']} aria-hidden="true">
-                              {openNotes ? '▾' : '▸'}
+                              ▸
                             </span>
                             <span className={styles['sub-resource-name']}>
                               {subResource.name}
