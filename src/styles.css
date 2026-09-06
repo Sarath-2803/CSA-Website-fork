@@ -137,7 +137,7 @@ section[id] {
 .csa-section-heading {
   --csa-heading-size: clamp(3.5rem, 14vw, 10rem);
   --csa-heading-line-top: -0.3em;
-  --csa-heading-line-bottom: 0.265em;
+  --csa-heading-line-bottom: 0.220em;
   position: relative;
   display: flex;
   flex-direction: column;
