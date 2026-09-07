@@ -1,64 +1,41 @@
 .art-card {
   position: relative;
   z-index: 3;
-  width: min(100%, 46rem);
+  width: min(100%, 38rem);
   justify-self: end;
   margin-top: 2.6rem;
-  /* Hidden on desktop — image is shown as a full-bleed background layer */
-  display: none;
 }
 
-.art-card-inner {
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.art-card-inner img {
+.art-card img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  border-radius: 1rem;
-}
-
-/* Gradient overlay — fades all four edges into the page background color */
-.art-card-gradient {
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  pointer-events: none;
-  background:
-    /* top edge */
-    linear-gradient(to bottom, #443741 0%, transparent 22%),
-    /* bottom edge */
-    linear-gradient(to top,    #443741 0%, transparent 28%),
-    /* left edge */
-    linear-gradient(to right,  #443741 0%, transparent 20%),
-    /* right edge */
-    linear-gradient(to left,   #443741 0%, transparent 20%);
 }
 
 @media (max-width: 1120px) {
   .art-card {
-    display: block;
     justify-self: center;
     margin-top: 0;
-    width: min(100%, 40rem);
+    transform: scale(0.93);
   }
 }
 
 @media (max-width: 780px) {
   .art-card {
-    width: min(calc(100vw - (2 * var(--mobile-gutter))), 26rem);
+    width: min(calc(100vw - (2 * var(--mobile-gutter))), 20rem);
+    max-height: 36vh;
+    max-height: 36dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 0.2rem;
   }
 
-  .art-card-inner img {
-    max-height: 44vh;
-    max-height: 44dvh;
-    width: 100%;
-    object-fit: cover;
+  .art-card img {
+    max-height: 34vh;
+    max-height: 34dvh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 }

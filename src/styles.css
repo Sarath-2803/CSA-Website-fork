@@ -369,41 +369,16 @@ section[id] {
   min-height: 100vh;
   padding: clamp(5.4rem, 8vw, 6.6rem) clamp(2rem, 5vw, 4.4rem) clamp(1.5rem, 3.5vw, 2.8rem);
   background-image:
+    radial-gradient(
+      circle at 72% 38%,
+      rgba(184, 128, 116, 0.38),
+      transparent 38%
+    ),
     radial-gradient(circle at 18% 20%, rgba(72, 50, 68, 0.55), transparent 38%),
     var(--csa-noise-image);
   background-color: var(--bg);
-  background-size: auto, 180px 180px;
-  background-blend-mode: normal, multiply;
-}
-
-/* Full-bleed background image on the right that fades into the solid bg on the left */
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: url("./assets/cs.png");
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
-  /* Mask: fully transparent on the left, fully visible from ~45% onward */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    transparent 30%,
-    rgba(0,0,0,0.15) 42%,
-    rgba(0,0,0,0.55) 52%,
-    black 65%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    transparent 30%,
-    rgba(0,0,0,0.15) 42%,
-    rgba(0,0,0,0.55) 52%,
-    black 65%
-  );
-  /* Dark overlay on the image so text stays readable */
-  filter: brightness(0.72) saturate(0.85);
+  background-size: auto, auto, 180px 180px;
+  background-blend-mode: normal, normal, multiply;
 }
 
 .hero-copy {
@@ -487,10 +462,6 @@ section[id] {
     min-height: auto;
     padding-top: 5.2rem;
     padding-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
-  }
-
-  .hero-bg-image {
-    display: none;
   }
 
   .hero-copy {
