@@ -59,10 +59,8 @@ export default function Resources() {
                 <h2 className={styles['resource-name']}>
                   {index + 1}. {resource.name}
                 </h2>
-                <div className={styles['toggle-icon-container']}>
-                  <span className={styles['toggle-icon-main']} aria-hidden="true">
-                    {isOpen ? '▾' : '▸'}
-                  </span>
+                <div className={styles['toggle-icon-container']} aria-hidden="true">
+                  <span className={styles['toggle-icon-main']}></span>
                 </div>
               </button>
 
