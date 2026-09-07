@@ -6,7 +6,7 @@ const contacts = [
         name : "Abel John Jose",
         role : "Secretary",
         phoneNo : "+91 79076 12039",
-        mail : "example@email.com"
+        mail : "tve23cs001@cet.ac.in"
     },
 
     {   
@@ -14,15 +14,15 @@ const contacts = [
         name : "Devanarayanan H",
         role : "Joint Secretary",
         phoneNo : "+91 81118 35721",
-        mail : "example@email.com"
+        mail : "tve23cs051@cet.ac.in"
     },
 
     {   
         id : 3,
-        name : "Pridhu Raj RS",
+        name : "Sidharth Sunil S",
         role : "Association Coordinator",
-        phoneNo : "+91 80750 65371",
-        mail : "example@email.com"
+        phoneNo : "+91 82813 02559",
+        mail : "tve23cs133@cet.ac.in"
     },
 
 ];
