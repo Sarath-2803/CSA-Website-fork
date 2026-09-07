@@ -1,18 +1,18 @@
+import csBuilding from "../../assets/cs.png";
 import "./HeroArtwork.css";
 
 function HeroArtwork() {
   return (
     <div className="art-card" aria-hidden="true">
-      <div className="dept-photo-frame">
+      <div className="art-card-inner">
         <img
-          src="/cs.png"
+          src={csBuilding}
           fetchpriority="high"
           loading="eager"
           decoding="async"
-          alt="Department of Computer Science and Engineering"
-          className="dept-photo"
+          alt="Department of Computer Science and Engineering building"
         />
-        <div className="dept-photo-overlay" />
+        <div className="art-card-gradient" />
       </div>
     </div>
   );
