@@ -139,7 +139,7 @@ a {
 .nested-resource-item {
   display: flex;
   align-items: center;
-  padding: 5px 40px 5px 58px;
+  padding: 5px 40px 5px 50px;
   border-bottom: 1px solid var(--resources-bg-secondary);
 }
 
@@ -179,8 +179,8 @@ a {
   transition: transform 200ms ease, background-color 200ms ease;
 }
 
-.resource-header[aria-expanded='true'] .toggle-icon-container {
-  transform: rotate(90deg);
+/* .resource-header[aria-expanded='true'] .toggle-icon-container {
+  transform: rotate(120deg);
 }
 
 .toggle-icon-main {
@@ -188,14 +188,64 @@ a {
   font-size: 1.7rem;
   line-height: 1;
   color: var(--text-secondary);
-  transform: translateY(-1px);
+  /* transform: translateY(-1px); */
+  /*
 }
-
+*/
 .toggle-icon {
   font-size: 30px;
   color: var(--text-primary);
   transition: transform 200ms ease;
+} 
+
+.toggle-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.6rem;
+  height: 2.6rem;
+  min-width: 2.6rem;
+
+  margin-right: var(--resource-edge-gap);
+
+  border: 2px solid var(--text-secondary);
+  border-radius: 50%;
+
+  background: transparent;
+
+  transition:
+    background-color 220ms ease,
+    transform 220ms ease;
 }
+
+.toggle-icon-main {
+  display: block;
+
+  width: 0.65rem;
+  height: 0.65rem;
+
+  border-right: 2px solid var(--text-secondary);
+  border-bottom: 2px solid var(--text-secondary);
+
+  transform: rotate(-45deg);
+
+  transition: transform 250ms ease;
+}
+
+.resource-header[aria-expanded='true'] .toggle-icon-main {
+  transform: rotate(45deg);
+}
+
+
+.resource-header:hover .toggle-icon-container {
+  /* background-color: var(--text-secondary); */
+  transform: scale(1.08);
+}
+
+/* .resource-header:hover .toggle-icon-main {
+  border-color: var(--resources-bg-secondary);
+} */
 
 .sub-resource-toggle[aria-expanded='true'] .toggle-icon {
   transform: rotate(90deg);
@@ -224,6 +274,21 @@ a {
   flex-shrink: 0;
 }
 
+@media (max-width: 640px) {
+  .toggle-icon-container {
+    width: 2rem;
+    height: 2rem;
+    min-width: 2rem;
+    margin-right: 1rem;
+  }
+
+  .toggle-icon-main {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-width: 1.8px;
+  }
+}
+
 @media (min-width: 768px) {
   :root {
     --resource-edge-gap: 10%;
@@ -248,7 +313,7 @@ a {
 
   .nested-resource-item {
     padding: 10px 0;
-    padding-left: 18%;
+    padding-left: 15%;
     border-bottom: 1px solid var(--resources-bg-secondary);
   }
 
