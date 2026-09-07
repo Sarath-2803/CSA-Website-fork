@@ -57,6 +57,8 @@ function HomePage() {
       <div className="ambient ambient-b" />
 
       <section id="home" className="hero">
+        <div className="hero-bg-image" aria-hidden="true" />
+
         <div className="hero-copy">
           <div className="hero-text">
             <h1 className="home-h1">
